@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      font: inherit;
+    }
+    img,
+    picture,
+    svg,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+    input,
+    select,
+    textarea {
+      background-color: transparent;
+      outline: none;
+    }
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      outline: none;
+      border: 0;
+    }
+    body {
+      min-height: 100vh;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+      gap: 50px;
+      flex-direction: column;
+    }
+
+    .magnify-image {
+      width: min(800px, 90vw);
+      object-fit: cover;
+      display: block;
+      border-radius: 15px;
+    }
+
+    .magnify-glass {
+      position: absolute;
+      width: 50rem;
+      height: 50rem;
+      background-image: url(https://www.pixel4k.com/wp-content/uploads/2023/09/dragon-ball-z-character-4k_1695974386.jpg.webp);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.2;
+    }
+    .show {
+      opacity: 1;
+      transform: scale(0.5);
+    }
+  </style>
+  <body>
+    <div class="magnify">
+      <img
+        src="https://www.pixel4k.com/wp-content/uploads/2023/09/dragon-ball-z-character-4k_1695974386.jpg.webp"
+        class="magnify-image"
+      />
+      <div class="magnify-glass"></div>
+    </div>
+  </body>
+  <script>
+    const container = document.querySelector(".magnify");
+    const magnifyingGlass = container.querySelector(".magnify-glass");
+
+    container.addEventListener("pointerover", (e) => {
+      magnifyingGlass.style.left = `${e.pageX}px`;
+      magnifyingGlass.style.top = `${e.pageY}px`;
+    });
+
+    container.addEventListener("pointermove", (e) => {
+      const x =
+        ((e.pageX - container.offsetLeft) * 100) / container.clientWidth;
+      const y =
+        ((e.pageY - container.offsetTop) * 100) / container.clientHeight;
+
+      magnifyingGlass.style.left = `${
+        e.pageX - magnifyingGlass.clientWidth / 2
+      }px`;
+      magnifyingGlass.style.top = `${
+        e.pageY - magnifyingGlass.clientHeight / 2
+      }px`;
+      magnifyingGlass.style.backgroundPosition = `${x}% ${y}%`;
+      magnifyingGlass.classList.add("show");
+    });
+
+    container.addEventListener("pointerleave", () => {
+      magnifyingGlass.classList.remove("show");
+    });
+  </script>
+</html>
