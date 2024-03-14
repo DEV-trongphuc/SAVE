@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .circle-container {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      color: #ffb800;
+    }
+    div:nth-of-type(1) {
+      animation: text_rotate1 90s linear infinite;
+    }
+    div:nth-of-type(2) {
+      animation: text_rotate2 70s linear infinite;
+    }
+    div:nth-of-type(3) {
+      animation: text_rotate3 90s linear infinite;
+    }
+    .character {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    @keyframes text_rotate1 {
+      0% {
+        transform: skew(-83deg, 75deg) scale(0.15);
+      }
+      100% {
+        transform: skew(-83deg, 75deg) scale(0.15) rotate(-360deg);
+      }
+    }
+    @keyframes text_rotate2 {
+      0% {
+        transform: skew(110deg, 50deg) scale(0.7);
+      }
+      100% {
+        transform: skew(110deg, 50deg) scale(0.7) rotate(270deg);
+      }
+    }
+    @keyframes text_rotate3 {
+      0% {
+        transform: skew(100deg, 72deg) scale(0.7);
+      }
+      100% {
+        transform: skew(100deg, 72deg) scale(0.7) rotate(-360deg);
+      }
+    }
+
+    img {
+      width: 70px;
+      filter: drop-shadow(0 0 30px #ffb800) drop-shadow(0 0 5px #ffb800);
+    }
+  </style>
+  <body>
+    <div class="circle-container"></div>
+    <div class="circle-container"></div>
+    <div class="circle-container"></div>
+    <div><img src="./image (1).png" /></div>
+
+    <script>
+      const text = `   TURNIO DEV     TURNIO DEV  `;
+      const radius = 80; // Bán kính của vòng tròn
+      const circleContainers = document.querySelectorAll(".circle-container");
+
+      circleContainers.forEach((circleContainer, index) => {
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          const angle = (360 / text.length) * i;
+          const charElement = document.createElement("div");
+          charElement.innerText = char;
+          charElement.classList.add("character");
+          const posX = Math.cos((angle * Math.PI) / 180) * radius;
+          const posY = Math.sin((angle * Math.PI) / 180) * radius;
+          charElement.style.transform = `translate(-50%, -50%) translate(${posX}px, ${posY}px) rotate(${
+            90 + angle
+          }deg)`;
+          circleContainer.appendChild(charElement);
+        }
+      });
+    </script>
+  </body>
+</html>
