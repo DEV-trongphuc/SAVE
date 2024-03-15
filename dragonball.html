@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dragon Balls Tribute</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <style>
+    html {
+      background: rgb(0, 0, 0);
+    }
+
+    .container,
+    .fond-blanc,
+    div[class^="dragonball-"],
+    div[class^="boule-"],
+    .reflet,
+    div[class^="triangle-"],
+    div[class^="etoile-"] {
+      position: absolute;
+    }
+
+    .container {
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 290px;
+      height: 100px;
+    }
+
+    div[class^="boule-"] {
+      z-index: 9;
+      width: 16rem;
+      height: 16rem;
+      border-radius: 100%;
+      background: rgba(255, 123, 0, 1);
+    }
+
+    .fond-blanc {
+      z-index: 3;
+      width: 16rem;
+      height: 16rem;
+      border-radius: 100%;
+      background: rgba(255, 255, 255, 0.541);
+    }
+
+    div[class^="boule-"]:after {
+      z-index: 10;
+      content: "";
+      position: absolute;
+      height: 88%;
+      width: 97%;
+      border-top: 15px solid rgba(255, 203, 144, 0.671);
+      border-radius: 50%;
+      left: 52%;
+      top: 53%;
+      transform: translate3d(-50%, -50%, 0) rotateZ(145deg);
+    }
+
+    div[class^="boule-"]:before {
+      z-index: 10;
+      content: "";
+      position: absolute;
+      height: 89%;
+      width: 100%;
+      border-top: 51px solid rgba(255, 102, 0, 0.329);
+      border-radius: 50%;
+      left: 46%;
+      top: 38%;
+      transform: translate3d(-48%, -42%, 0) rotateZ(145deg);
+    }
+
+    .reflet {
+      z-index: 15;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 100%;
+      background: rgba(255, 215, 169, 0.582);
+      top: 2rem;
+      left: 2rem;
+    }
+
+    .etoile-1 {
+      z-index: -1;
+      top: 63px;
+      left: 53px;
+    }
+
+    .etoile-2 {
+      z-index: -2;
+      top: 124px;
+      left: 53px;
+    }
+
+    .etoile-3 {
+      z-index: -3;
+      top: 65px;
+      left: 122px;
+    }
+
+    .etoile-4 {
+      z-index: -4;
+      top: 126px;
+      left: 122px;
+    }
+
+    .triangle-1 {
+      top: 12px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 31px 0 0 39px;
+      border-color: transparent transparent transparent #d80000;
+      transform: rotate(-36deg);
+    }
+    .triangle-2 {
+      left: 2rem;
+      top: 1rem;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 37px 0 0 26px;
+      border-color: transparent transparent transparent #d80000;
+      transform: rotate(24deg);
+    }
+    .triangle-3 {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 26px 0px 0 17px;
+      border-color: transparent transparent transparent #d80000;
+      transform: rotate(-115deg);
+      top: 32px;
+      left: 16px;
+    }
+
+    /* 4 STAR BALL  */
+    .dragonball-4 {
+      left: 0rem;
+      top: -4rem;
+      z-index: -6;
+    }
+
+    /* 1 STAR BALL  */
+    .dragonball-1 {
+      left: 0rem;
+      top: 8rem;
+    }
+
+    .dragonball-1 .etoile-1 {
+      top: 91px;
+      left: 84px;
+    }
+
+    /* 2 STARS BALL  */
+    .dragonball-2 {
+      left: -13rem;
+      top: 3rem;
+      z-index: 2;
+    }
+
+    .dragonball-2 .etoile-1 {
+      top: 77px;
+      left: 113px;
+    }
+
+    .dragonball-2 .etoile-2 {
+      top: 112px;
+      left: 53px;
+    }
+
+    /* 3 STARS BALL  */
+    .dragonball-3 {
+      left: -12rem;
+      top: -8rem;
+      z-index: -7;
+    }
+
+    .dragonball-3 .etoile-1 {
+      top: 112px;
+      left: 113px;
+    }
+
+    .dragonball-3 .etoile-2 {
+      top: 112px;
+      left: 53px;
+    }
+
+    .dragonball-3 .etoile-3 {
+      top: 55px;
+      left: 87px;
+    }
+
+    /* 5 STARS BALL  */
+    .dragonball-5 {
+      left: 0;
+      top: -14rem;
+      z-index: -12;
+    }
+
+    .dragonball-5 .etoile-1 {
+      top: 134px;
+      left: 114px;
+    }
+
+    .dragonball-5 .etoile-2 {
+      top: 130px;
+      left: 62px;
+    }
+
+    .dragonball-5 .etoile-3 {
+      top: 80px;
+      left: 45px;
+    }
+
+    .dragonball-5 .etoile-4 {
+      top: 80px;
+      left: 140px;
+    }
+
+    .dragonball-5 .etoile-5 {
+      top: 51px;
+      left: 92px;
+    }
+
+    /* 6 STARS BALL  */
+    .dragonball-6 {
+      left: 12rem;
+      top: -8rem;
+      z-index: -7;
+    }
+
+    .dragonball-6 .etoile-1 {
+      top: 145px;
+      left: 116px;
+    }
+
+    .dragonball-6 .etoile-2 {
+      top: 145px;
+      left: 63px;
+    }
+
+    .dragonball-6 .etoile-3 {
+      top: 97px;
+      left: 33px;
+    }
+
+    .dragonball-6 .etoile-4 {
+      top: 97px;
+      left: 148px;
+    }
+
+    .dragonball-6 .etoile-5 {
+      top: 51px;
+      left: 64px;
+    }
+
+    .dragonball-6 .etoile-6 {
+      top: 52px;
+      left: 118px;
+    }
+
+    /* 7 STARS BALL  */
+    .dragonball-7 {
+      left: 13rem;
+      top: 3rem;
+      z-index: 2;
+    }
+
+    .dragonball-7 .etoile-1 {
+      top: 145px;
+      left: 116px;
+    }
+
+    .dragonball-7 .etoile-2 {
+      top: 145px;
+      left: 63px;
+    }
+
+    .dragonball-7 .etoile-3 {
+      top: 97px;
+      left: 33px;
+    }
+
+    .dragonball-7 .etoile-4 {
+      top: 97px;
+      left: 148px;
+    }
+
+    .dragonball-7 .etoile-5 {
+      top: 51px;
+      left: 64px;
+    }
+
+    .dragonball-7 .etoile-6 {
+      top: 52px;
+      left: 118px;
+    }
+
+    .dragonball-7 .etoile-7 {
+      top: 99px;
+      left: 91px;
+    }
+
+    @keyframes shadow-light {
+      0% {
+        box-shadow: 0px 0px 50px 18px #ffd229;
+      }
+      50% {
+        box-shadow: 0px 0px 50px 18px #ffd2294a;
+      }
+      50% {
+        box-shadow: 0px 0px 50px 18px #ffd229;
+      }
+    }
+
+    div[class^="dragonball-"] .fond-blanc {
+      animation-name: shadow-light;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      animation-delay: 0s;
+      animation-direction: alternate;
+    }
+    .container {
+      margin-top: 2000px;
+      scale: 0.5;
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+      margin-top: 600px;
+      width: 1000px;
+      animation: shadow-light2 3s ease forwards;
+      animation-delay: 2s;
+      transform: scale(0.1);
+      transform-origin: bottom;
+    }
+    @keyframes shadow-light2 {
+      0% {
+        transform: scale(0.1);
+        filter: drop-shadow(0 0 50px #ffd2294a);
+      }
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 70px #ffd229);
+      }
+    }
+    @keyframes shadow-light3 {
+      0% {
+        transform: translateY(5px);
+      }
+      100% {
+        transform: translateY(-5px);
+      }
+    }
+  </style>
+  <body>
+    <img src="./namek.webp" />
+    <div class="container">
+      <div class="dragonball-4">
+        <div class="boule-4">
+          <div class="reflet"></div>
+          <div class="etoile-1">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-2">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-3">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-4">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+        </div>
+        <div class="fond-blanc"></div>
+      </div>
+
+      <div class="dragonball-1 mobile-off">
+        <div class="boule-1">
+          <div class="reflet"></div>
+          <div class="etoile-1">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+        </div>
+        <div class="fond-blanc"></div>
+      </div>
+
+      <div class="dragonball-2 mobile-off">
+        <div class="boule-1">
+          <div class="reflet"></div>
+          <div class="etoile-1">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+          <div class="etoile-2">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+        </div>
+        <div class="fond-blanc"></div>
+      </div>
+
+      <div class="dragonball-3 mobile-off">
+        <div class="boule-1">
+          <div class="reflet"></div>
+          <div class="etoile-1">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+          <div class="etoile-2">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-3">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+        </div>
+        <div class="fond-blanc"></div>
+      </div>
+
+      <div class="dragonball-5 mobile-off">
+        <div class="boule-1">
+          <div class="reflet"></div>
+          <div class="etoile-1">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+          <div class="etoile-2">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-3">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-4">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-5">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+        </div>
+        <div class="fond-blanc"></div>
+      </div>
+
+      <div class="dragonball-6 mobile-off">
+        <div class="boule-1">
+          <div class="reflet"></div>
+          <div class="etoile-1">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+          <div class="etoile-2">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-3">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-4">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-5">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-6">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+        </div>
+        <div class="fond-blanc"></div>
+      </div>
+
+      <div class="dragonball-7 mobile-off">
+        <div class="boule-1">
+          <div class="reflet"></div>
+          <div class="etoile-1">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+          <div class="etoile-2">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-3">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-4">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-5">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-6">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+
+          <div class="etoile-7">
+            <div class="triangle-1"></div>
+            <div class="triangle-2"></div>
+            <div class="triangle-3"></div>
+          </div>
+        </div>
+        <div class="fond-blanc"></div>
+      </div>
+    </div>
+  </body>
+</html>
