@@ -1,6 +1,7 @@
 // Hàm check sinh nhật hôm nay trên Google sheets: 
 =IF(AND(DAY(D2)=DAY(TODAY()),MONTH(D2)=MONTH(TODAY())),true,"")
 // Hàm trên appscript ngay chỗ htmlBody các bạn thay cái template email trên stripo.email của mình vô nhe 
+// Mấy cái item[số] các bạn sửa lại cho phù hợp với trang tính nhe
 function doGet() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const range = sheet.getDataRange();
