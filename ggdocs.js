@@ -3,7 +3,7 @@ function doGet() {
   var body = doc.getBody();
   var data = {};
   var elements = body.getNumChildren();
-  for (var i = 0; i < elements-1; i++) {
+  for (var i = 0; i < elements; i++) {
     var child = body.getChild(i).copy();
     var text = child.getText().trim();
     var elementType = child.getType();
