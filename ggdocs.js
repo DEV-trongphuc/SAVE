@@ -8,10 +8,12 @@ function doGet() {
     var text = child.getText().trim();
     var elementType = child.getType();
     if (elementType == DocumentApp.ElementType.PARAGRAPH) {
-      var paragraphText = text.split(':');
-      var key = paragraphText[0].trim();
-      var value = paragraphText.slice(1).join(':').trim();
-      data[key] = value;
+      var firstColonIndex = text.indexOf(':');
+      if (firstColonIndex !== -1) {
+        var key = text.slice(0, firstColonIndex).trim();
+        var value = text.slice(firstColonIndex + 1).trim();
+        data[key] = value;
+      }
     }
   }
   var jsonString = JSON.stringify(data);
